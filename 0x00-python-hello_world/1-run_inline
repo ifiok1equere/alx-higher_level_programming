@@ -1,0 +1,4 @@
+#!/bin/bash
+#!/usr/bin/python3
+echo $PYCODE > file
+python3 ./file
