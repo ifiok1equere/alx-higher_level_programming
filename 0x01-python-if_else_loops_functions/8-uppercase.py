@@ -5,4 +5,3 @@ def uppercase(str):
               ord(char) <= 122 else "{:s}".format(char), end="")
     else:
         print("{:s}".format("\n"), end="")
-
