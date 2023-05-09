@@ -2,7 +2,7 @@
 
 
 def fizzbuzz():
-    print("{}, {}, ".format(1, 2), end="")
+    print("{} {} ".format(1, 2), end="")
     for i in range(3, 101):
         if i % 3 == 0 and i % 5 == 0:
             print("{:s} ".format("FizzBuzz"), end="")
