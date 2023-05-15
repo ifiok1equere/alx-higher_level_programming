@@ -7,7 +7,7 @@
 
 int is_palindrome(listint_t **head)
 {
-	int i = 1, j, k = 0, list_len;
+	int i = 1, j, k = 0, l;
 	listint_t *ptr_front = *head;
 	listint_t *ptr_back = *head;
 
@@ -18,7 +18,7 @@ int is_palindrome(listint_t **head)
 		i++;
 		ptr_back = ptr_back->next;
 	}
-	list_len = i / 2;
+	l = i / 2;
 	while (ptr_front->next != ptr_back && ptr_front != ptr_back)
 	{
 		if (ptr_front->n == ptr_back->n)
@@ -27,7 +27,7 @@ int is_palindrome(listint_t **head)
 			ptr_back = *head;
 			for (j = 1; j < i; j++)
 				ptr_back = ptr_back->next;
-			if (k <= list_len)
+			if (k <= l)
 				ptr_front = ptr_front->next;
 			k++;
 		}
@@ -36,8 +36,5 @@ int is_palindrome(listint_t **head)
 	{
 		return (1);
 	}
-	else
-	{
-		return (0);
-	}
+	return (0);
 }
