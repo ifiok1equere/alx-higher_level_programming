@@ -2,6 +2,8 @@
 
 
 def print_reversed_list_integer(my_list=[]):
+    if my_list == None:
+        return
     if my_list == []:
         return
     i = len(my_list) - 1
