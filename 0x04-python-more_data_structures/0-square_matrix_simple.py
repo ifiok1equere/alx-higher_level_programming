@@ -2,10 +2,10 @@
 
 
 def square_matrix_simple(matrix=[]):
-    if matrix == None:
+    if matrix is None:
         return
     new_matrix = []
-    #new_matrix = [row[:] for row in matrix]
+    '#new_matrix = [row[:] for row in matrix]'
     for row in matrix:
         new_matrix.append(row[:])
         for i in range(len(new_matrix)):
