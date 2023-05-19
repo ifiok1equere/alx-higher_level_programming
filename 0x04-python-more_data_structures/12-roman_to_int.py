@@ -15,6 +15,7 @@ def roman_to_int(roman_string):
                     total += value
                     break
                 else:
-                    total = total + dict_1[key] - (2 * dict_1[roman_string[i - 1]])
+                    x = 2 * dict_1[roman_string[i -1]]
+                    total = total + dict_1[key] - x
                     break
     return abs(total)
