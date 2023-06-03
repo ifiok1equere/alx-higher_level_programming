@@ -14,8 +14,12 @@ class Square:
         Args:
             size (int): a critical parameter of a square
         '''
-        self.size = size
-        self.position = position
+        try:
+            self.size = size
+            self.position = position
+        except Exception as e:
+            print(e)
+            self.position = (0, 0)
 
     def area(self):
         '''
@@ -37,11 +41,12 @@ class Square:
             Reference made to the private instance attribute size for function
             argument.
         '''
-        if self.__size == 0:
-            print()
+        if (self.__size == 0) or (self.__position == (0, 0)):
+            print('')
         else:
             j = 0
-            #if self.__position[1] not > 0:
+            if self.__position[1] > 0:
+                print()
             for i in range(self.__size):
                 while j < self.__position[0]:
                     print(' ', end="")
@@ -86,7 +91,7 @@ class Square:
             Reference made to the private instance attribute size for function
             argument.
         '''
-        if (type(value) is not tuple) or (value[0] < 0 or value[1] < 0):
+        if (type(value) is not tuple) or (len(value) != 2) or (value[0] < 0 or value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
