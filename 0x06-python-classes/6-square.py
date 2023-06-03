@@ -13,9 +13,10 @@ class Square:
 
         Args:
             size (int): a critical parameter of a square
+            position (tuple): used to pad the square with spaces
         '''
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         '''
@@ -67,8 +68,10 @@ class Square:
         The setter method is a private instance method that ensures the size of
         the square is set to the value size and cannot be changed.
         '''
-        if (type(value) is not tuple) or \
-                (len(value) != 2) or (value[0] < 0 or value[1] < 0):
+        if (type(value) is not tuple) \
+                or (len(value) != 2) \
+                or not all(type(n) is int for n in value) \
+                or not all(int(i) >= 0 for i in value):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
