@@ -40,7 +40,7 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = value
-    
+
     def my_print(self):
         '''
         This method is a public instance method that prints to stdout the
@@ -54,7 +54,7 @@ class Square:
                     print()
                 for j in range(self.__size):
                     print(" " * self.__position[0] + "#" * self.__size)
-            except:
+            except Exception as e:
                 print()
 
     @property
