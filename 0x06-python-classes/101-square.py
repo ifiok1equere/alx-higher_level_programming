@@ -54,10 +54,10 @@ class Square:
                 print()
             for j in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
-
+            print(" " * self.__position[0] + "#" * self.__size, end="")
     def __str__(self):
         self.my_print()
-        return ""
+        return ''
 
     @property
     def position(self):
