@@ -8,7 +8,7 @@ class Node:
     ''' The class defines a Node. '''
     def __init__(self, data, next_node=None):
         '''
-        The __init__ method creates a private attribute 
+        The __init__ method creates a private attribute
         called data and is instantiated to a variable called data.
 
         Args:
@@ -48,14 +48,15 @@ class Node:
         else:
             self.__next_node = value
 
-class SinglyLinkedList:
-        '''
-        The __init__ method creates a private attribute 
-        called head and is instantiated to a value None.
 
-        Args:
-            None
-        '''
+class SinglyLinkedList:
+    '''
+    The __init__ method creates a private attribute
+    called head and is instantiated to a value None.
+
+    Args:
+        None
+    '''
     def __init__(self):
         self.__head = None
 
