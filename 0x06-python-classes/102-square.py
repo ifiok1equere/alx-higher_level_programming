@@ -38,15 +38,15 @@ class Square:
     def __eq__(self, object2):
         if isinstance(object2, Square):
             return self.area() == object2.area()
-    
+
     def __ne__(self, object2):
         if isinstance(object2, Square):
             return self.area() != object2.area()
-    
+
     def __gt__(self, object2):
         if isinstance(object2, Square):
             return self.area() > object2.area()
-    
+
     def __ge__(self, object2):
         if isinstance(object2, Square):
             return self.area() >= object2.area()
