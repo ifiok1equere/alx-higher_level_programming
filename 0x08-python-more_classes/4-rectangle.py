@@ -55,7 +55,7 @@ class Rectangle:
             i += 1
         print("#" * self.__width, end="")
         return ""
-    
+
     def __repr__(self):
         if self.__width == 0 or self.__height == 0:
             return ""
