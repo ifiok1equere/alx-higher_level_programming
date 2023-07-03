@@ -62,7 +62,8 @@ class Rectangle:
     def __repr__(self):
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "Rectangle({:d}, {:d})".format(self.width, self.height)
+        return self.__class__.__name__("{:d}, \
+                {:d})".format(self.width, self.height))
 
     def __del__(self):
         print("Bye rectangle...")
