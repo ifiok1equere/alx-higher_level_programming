@@ -50,7 +50,8 @@ class Rectangle:
 
     def print(self):
         i = 0
-        while i < self.__height:
+        while i < self.__height - 1:
             print("#" * self.__width)
             i += 1
+        print("#" * self.__width, end="")
         return ""
