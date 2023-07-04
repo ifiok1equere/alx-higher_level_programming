@@ -9,7 +9,7 @@ class LockedClass(object):
 
     def __setattr__(self, attribute, value):
         if not attribute == "first_name":
-            raise AttributeError(f"'{self.__class__.__name__}' \
-                    object has no attribute '{attribute}'")
+            raise AttributeError("'{}' object has no \
+                    attribute '{}'".format(self.__class__.__name__, attribute))
         else:
             object.__setattr__(self, attribute, value)
