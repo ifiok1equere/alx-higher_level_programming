@@ -2,7 +2,7 @@
 """This module defines a class"""
 
 
-class LockedClass(object):
+class LockedClass:
     """ This class defines ground rules for
     setting an attribute and raises errors when
     violated """
