@@ -7,7 +7,4 @@ class LockedClass:
     setting an attribute and raises errors when
     violated """
 
-    def __setattr__(self, attribute, value):
-        if not attribute == "first_name":
-            raise AttributeError("'{}' object has no attribute \
-'{}'".format(self.__class__.__name__, attribute))
+    __slots__ = ["first_name"]
