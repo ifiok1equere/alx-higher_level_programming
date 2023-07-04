@@ -8,7 +8,8 @@ class LockedClass(object):
     violated """
 
     def __setattr__(self, attribute, value):
-        if not attribute == "first_name":
+        if not attribute == "first_name" and \
+                type(value) == str:
             raise AttributeError("'{}' object has no attribute \
 '{}'".format(self.__class__.__name__, attribute))
         else:
