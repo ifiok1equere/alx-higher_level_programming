@@ -18,6 +18,30 @@ calculates the summation of #2 integer.
 >>> add_integer(100.3, -2)
 98
 
+>>> add_integer(float("NaN"), 1.0e+308)
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(10.999993, -2.999999)
+8
+
+>>> add_integer(-1, -2)
+-3
+
+>>> add_integer(-1.9999, -2.99999)
+-3
+
+>>> add_integer(float("inf"), 2)
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(i, -2j)
+Traceback (most recent call last):
+...
+NameError: name 'i' is not defined
+
 >>> add_integer(4, "School")
 Traceback (most recent call last):
 ...
@@ -38,7 +62,7 @@ Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
->>> add_integer("None", 2)
+>>> add_integer(None, 2)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
@@ -48,11 +72,6 @@ TypeError: a must be an integer
 
 >>> add_integer(10, 9.9)
 19
-
->>> add_integer("4", "5")
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
 
 >>> add_integer("4", "5")
 Traceback (most recent call last):
