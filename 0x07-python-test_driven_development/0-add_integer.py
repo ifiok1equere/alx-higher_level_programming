@@ -2,7 +2,7 @@
 """
 This module defines an addition functions for integers.
 No other basic mathematical operations are covered therein
-except the addition operation.
+except the addition operation and some checks with it.
 """
 
 

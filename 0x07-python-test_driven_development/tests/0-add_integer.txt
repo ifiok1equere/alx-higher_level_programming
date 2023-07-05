@@ -29,7 +29,7 @@ ValueError: cannot convert float NaN to integer
 >>> add_integer(-1, -2)
 -3
 
->>> add_integer(-1.9999, -2.99999)
+>>> add_integer(-1.998988999, -2.99999)
 -3
 
 >>> add_integer(float("inf"), 2)
