@@ -3,7 +3,7 @@
 
 
 class BaseGeometry(object):
-    """ 
+    """
     This class is an empty class
     but inherits an object.
     """
