@@ -2,7 +2,7 @@
 """ This module defines a class """
 
 
-class BaseGeometry(object):
+class BaseGeometry:
     """
     This class is an empty class
     but inherits an object.
