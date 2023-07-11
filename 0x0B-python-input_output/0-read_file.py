@@ -5,7 +5,7 @@
 def read_file(filename=""):
     """
     This function reads a text file
-    
+
     Endcoding: "UTF-8"
 
     Args:
@@ -13,8 +13,7 @@ def read_file(filename=""):
 
     Return:
         A pointer to the read file
-        
     """
 
     with open(filename, encoding="utf-8") as f:
-        return f
+        print(f.read(), end="")
