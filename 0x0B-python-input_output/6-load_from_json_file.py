@@ -8,7 +8,7 @@ def load_from_json_file(filename):
     This function writes an object from a text file
 
     Args:
-        filename of type file
+        filename is of type file
 
     Return:
         A pointer to a json file
