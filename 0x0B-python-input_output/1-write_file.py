@@ -5,7 +5,7 @@
 def write_file(filename="", text=""):
     """
     This function reads a text file
-    
+
     Endcoding: "UTF-8"
 
     Args:
@@ -13,7 +13,6 @@ def write_file(filename="", text=""):
 
     Return:
         A pointer to the read file
-        
     """
 
     with open(filename, 'w') as f:
