@@ -18,10 +18,10 @@ class BaseGeometry:
         if self.value <= 0:
             raise ValueError("{:s} must be greater than 0".format(self.name))
 
+
 class Rectangle(BaseGeometry):
     """
-    This class is a class with 
-    inheritance.
+    This class is a class with inheritance.
     """
     def __init__(self, width, height):
         self.integer_validator("width", width)
