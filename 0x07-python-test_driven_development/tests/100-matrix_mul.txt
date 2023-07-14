@@ -111,6 +111,11 @@ Traceback (most recent call last):
 ...
 TypeError: m_a must be a list
 
+>>> matrix_mul([[]], "ifiok")
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list
+
 >>> matrix_mul([['a', 1.3, 4]], [[1, 2, 3]])
 Traceback (most recent call last):
 ...
