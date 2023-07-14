@@ -81,6 +81,51 @@ Traceback (most recent call last):
 ...
 TypeError: m_a must be a list
 
+>>> matrix_mul()
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+>>> matrix_mul([],[])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+>>> matrix_mul([[]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+>>> matrix_mul([[1]], [])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+>>> matrix_mul([[2]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+>>> matrix_mul("matrix", "ifiok")
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+>>> matrix_mul([['a', 1.3, 4]], [[1, 2, 3]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> matrix_mul([["matrix"]], [["ifiok"]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> matrix_mul([[1, 5, 8.4]], [["ifiok"]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
 """
 
 # vim: set ft=rst
