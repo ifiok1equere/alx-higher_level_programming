@@ -7,9 +7,9 @@ and the result is the resulting matrix after division.
 
 
 def matrix_mul(m_a, m_b):
-    """ 
+    """
     Multiplies a matrix by another matrix.
-    
+
     Args:
         m_a: 1st Matrix argument.
         m_b: 2nd Matrix argument.
@@ -64,7 +64,6 @@ def matrix_mul(m_a, m_b):
 
     if not len(m_a[0]) == len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
-
 
     m_a_row = len(m_a)
     m_a_column = len(m_a[0])
