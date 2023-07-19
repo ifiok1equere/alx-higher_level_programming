@@ -18,10 +18,12 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """ The width attribute getter function """
         return self.__width
 
     @width.setter
     def width(self, value):
+        """ The width attribute setter function """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -30,9 +32,11 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """ The height attribute getter function """
         return self.__height
 
     @height.setter
+        """ The height attribute setter function """
     def height(self, value):
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -41,10 +45,12 @@ class Rectangle(Base):
         self.__height = value
 
     @property
+        """ The x-co-ordinate attribute getter function """
     def x(self):
         return self.__x
 
     @x.setter
+        """ The x-co-ordinate attribute setter function """
     def x(self, value):
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
@@ -53,11 +59,13 @@ class Rectangle(Base):
         self.__x = value
 
     @property
+        """ The y-co-ordinate attribute getter function """
     def y(self):
         return self.__y
 
     @y.setter
     def y(self, value):
+        """ The y-co-ordinate attribute setter function """
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         if value < 0:
