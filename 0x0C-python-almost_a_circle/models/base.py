@@ -3,6 +3,7 @@
 import json
 import os
 
+
 class Base:
     """
     This class is the superclass from
@@ -33,7 +34,7 @@ class Base:
             obj_dict.append(obj.to_dictionary())
         with open(cls.__name__ + "json", mode="w", encoding="utf-8") as file:
             file.write(cls.to_json_string(obj_dict))
-    
+
     @staticmethod
     def from_json_string(json_string):
         if json_string is None or len(json_string) == 0:
@@ -58,6 +59,6 @@ class Base:
             return []
         with open(cls.__name__ + ".json", mode="r", encoding="utf-8") as f:
             file = f.read()
-        
+
         for line in file:
             dict_ = cls.from_json_string(file)
