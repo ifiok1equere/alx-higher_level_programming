@@ -36,8 +36,8 @@ class Rectangle(Base):
         return self.__height
 
     @height.setter
-        """ The height attribute setter function """
     def height(self, value):
+        """ The height attribute setter function """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -45,13 +45,13 @@ class Rectangle(Base):
         self.__height = value
 
     @property
-        """ The x-co-ordinate attribute getter function """
     def x(self):
+        """ The x-co-ordinate attribute getter function """
         return self.__x
 
     @x.setter
-        """ The x-co-ordinate attribute setter function """
     def x(self, value):
+        """ The x-co-ordinate attribute setter function """
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         if value < 0:
@@ -59,8 +59,8 @@ class Rectangle(Base):
         self.__x = value
 
     @property
-        """ The y-co-ordinate attribute getter function """
     def y(self):
+        """ The y-co-ordinate attribute getter function """
         return self.__y
 
     @y.setter
@@ -73,9 +73,11 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """ This method returns the area of a rectangle """
         return self.__height * self.__width
 
     def display(self):
+        """ This method prints a rectangle """
         for _ in range(self.__y):
             print()
         for _ in range(self.__height - 1):
@@ -83,11 +85,13 @@ class Rectangle(Base):
         print(" " * self.__x + "#" * self.__width)
 
     def __str__(self):
+        """ The is an __str__ overridding method for the rectangle """
         return ("[Rectangle] ({:d}) {:d}/{:d} - "
                 "{:d}/{:d}".format(self.id, self.__x, self.__y,
                                    self.__width, self.__height))
 
     def update(self, *args, **kwargs):
+        """ This method is an attribute setter for the rectangle """
         attributes = ["id", "width", "height", "x", "y"]
 
         if args:
@@ -100,5 +104,8 @@ class Rectangle(Base):
                 setattr(self, key, value)
 
     def to_dictionary(self):
+        """
+        This method returns the dictionary representation of a rectangle
+        """
         return {"x": self.x, "y": self.y, "id": self.id,
                 "height": self.height, "width": self.width}
