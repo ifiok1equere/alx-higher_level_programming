@@ -9,6 +9,7 @@ class Rectangle(Base):
     inherits from the Base class.
     """
     def __init__(self, width, height, x=0, y=0, id=None):
+        """ This initializes an instance of this class """
         self.width = width
         self.height = height
         self.x = x
