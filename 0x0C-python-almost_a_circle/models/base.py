@@ -30,7 +30,7 @@ class Base:
         obj_dict = []
         if list_objs is None:
             with open(cls.__name__ + "json", mode="w", encoding="utf-8") as file:
-                file.write(obj_dict)
+                file.write("[]")
         else:
             for obj in list_objs:
                 obj_dict.append(obj.to_dictionary())
