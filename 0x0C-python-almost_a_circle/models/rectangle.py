@@ -55,7 +55,6 @@ class Rectangle(Base):
     def y(self):
         return self.__y
 
-
     @y.setter
     def y(self, value):
         if not isinstance(value, int):
