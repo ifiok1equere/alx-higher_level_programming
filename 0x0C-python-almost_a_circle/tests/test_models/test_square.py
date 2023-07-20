@@ -184,10 +184,10 @@ class TestRectangle(unittest.TestCase):
             '{"id": 12, "x": 2, "size": 10, "y": 0}, '
             '{"id": 3, "x": 2, "size": 3, "y": 1}]'
             )
-        
-    def test_type(self):
-        self.assertEqual(type(self.s8.to_dictionary()), dict)
-        self.assertEqual(
+
+        def test_type(self):
+            self.assertEqual(type(self.s8.to_dictionary()), dict)
+            self.assertEqual(
                     type(Base.to_json_string(
                         [self.s1.to_dictionary(), self.s2.to_dictionary()]
                     )), str)
@@ -201,7 +201,9 @@ class TestRectangle(unittest.TestCase):
         with open("Square.json", "r") as file:
             content = file.read()
 
-        expected_json = json.dumps([self.s1.to_dictionary(), self.s2.to_dictionary()])
+        expected_json = json.dumps(
+                [self.s1.to_dictionary(), self.s2.to_dictionary()]
+                )
         self.assertEqual(content, expected_json)
 
         """ Clean up by removing the file after the test """

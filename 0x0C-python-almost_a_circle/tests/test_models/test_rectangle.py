@@ -207,7 +207,9 @@ class TestRectangle(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             content = file.read()
 
-        expected_json = json.dumps([self.r1.to_dictionary(), self.r2.to_dictionary()])
+        expected_json = json.dumps(
+                [self.r1.to_dictionary(), self.r2.to_dictionary()]
+                )
         self.assertEqual(content, expected_json)
 
         """ Clean up by removing the file after the test """
