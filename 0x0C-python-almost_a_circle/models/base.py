@@ -40,7 +40,7 @@ class Base:
             with open(
                     cls.__name__ + ".json", mode="w", encoding="utf-8"
                     ) as file:
-                file.write("[]")
+                file.write()
         else:
             for obj in list_objs:
                 obj_dict.append(obj.to_dictionary())
