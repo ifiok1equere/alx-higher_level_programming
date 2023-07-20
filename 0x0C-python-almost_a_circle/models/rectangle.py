@@ -92,7 +92,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """ This method is an attribute setter for the rectangle """
-        attributes = ["id", "width", "height", "x", "y"]
+        attributes = ["width", "height", "x", "y", "id"]
 
         if args:
             for i, arg in enumerate(args):
