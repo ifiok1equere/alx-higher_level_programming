@@ -82,7 +82,9 @@ class Base:
         with open(cls.__name__ + ".json", mode="r", encoding="utf-8") as f:
             file = f.read()
 
-        for line in file:
-            var += cls.from_json_string(file)
+        file_dict = cls.from_json_string(file)
+
+        for dict_ in file_dict:
+            var.append(cls.create(**dict_))
 
         return var
