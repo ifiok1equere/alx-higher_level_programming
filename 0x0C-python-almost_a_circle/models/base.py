@@ -52,7 +52,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """
-        This method returns the list of  JSON string representation
+        This method returns the list of JSON string representation
         """
         if json_string is None or len(json_string) == 0:
             return []
@@ -83,4 +83,6 @@ class Base:
             file = f.read()
 
         for line in file:
-            dict_ = cls.from_json_string(file)
+            var += cls.from_json_string(file)
+
+        return var
