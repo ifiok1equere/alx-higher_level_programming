@@ -3,7 +3,10 @@
 SELECT
     name
 FROM
-    (SELECT genre_id FROM tv_show_genres WHERE tv_show_genres.show_id = 8) AS gen_id
+    tv_show_genres
 INNER JOIN
-    tv_genres ON gen_id.genre_id = tv_genres.id
-ORDER BY name ASC;
+    tv_genres ON tv_show_genres.genre_id = tv_genres.id
+WHERE
+    tv_show_genres.show_id = 8
+ORDER BY
+    name ASC;
