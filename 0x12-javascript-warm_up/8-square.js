@@ -3,7 +3,7 @@
 const process = require('process');
 const args = process.argv;
 
-if (args[2] !== 3 || isNaN(Number(args[2]))) {
+if (args.length !== 3 || isNaN(Number(args[2]))) {
   console.log('Missing size');
 } else {
   let i = 0;
