@@ -1,9 +1,9 @@
-#0x12. JavaScript - Warm up
+# 0x12. JavaScript - Warm up
 ![Javascript WarmUp](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/303/Javascript-535.png.jpeg)
 
-##Learning Objectives:
+## Learning Objectives:
 - At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-###General
+### General
 ~~~~
 + Why JavaScript programming is amazing
 + How to run a JavaScript script
@@ -22,8 +22,8 @@
 + How to manipulate dictionary
 + How to import a file
 ~~~~
-####Requirements
-#####General
+#### Requirements
+##### General
 - Allowed editors: vi, vim, emacs
 - All your files will be interpreted on Ubuntu 20.04 LTS using node (version 14.x)
 - All your files should end with a new line
@@ -32,9 +32,9 @@
 - Your code should be semistandard compliant (version 16.x.x). Rules of Standard + semicolons on top. Also as reference: AirBnB style
 - All your files must be executable
 - The length of your files will be tested using wc
-##More Info
-###Install Node 14
+## More Info
+### Install Node 14
 `$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -`
 `$ sudo apt-get install -y nodejs`
-###Install semi-standard
+### Install semi-standard
 `$ sudo npm install semistandard --global`
