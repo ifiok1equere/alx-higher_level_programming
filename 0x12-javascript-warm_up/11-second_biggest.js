@@ -10,14 +10,15 @@ if (args.length < 4) {
   console.log(0);
 } else {
   for (let i = 0; i <= args.length - 2; i++) {
-    if (MaxInt < args[i + 2]) {
-      MaxInt = args[i + 2];
+    if (MaxInt < parseInt(args[i + 2])) {
+      MaxInt = parseInt(args[i + 2]);
     }
   }
   for (let i = 0; i <= args.length - 2; i++) {
-    if ((args[i + 2] > MaxIntNext) && (args[i + 2] < MaxInt)) {
-      MaxIntNext = args[i + 2];
+    if (((parseInt(args[i + 2])) > MaxIntNext) && (parseInt(args[i + 2]) < MaxInt)) {
+      MaxIntNext = parseInt(args[i + 2]);
     }
   }
 }
+/* console.log(MaxInt); */
 console.log(MaxIntNext);
