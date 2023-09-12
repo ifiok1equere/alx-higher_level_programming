@@ -1,12 +1,15 @@
 #!/usr/bin/node
 
-const size = Math.floor(Number(process.argv[2]));
-if (isNaN(size)) {
+const process = require('process');
+const args = process.argv;
+
+if (args.length !== 3 || isNaN(Number(args[2]))) {
   console.log('Missing size');
 } else {
-  for (let r = 0; r < size; r++) {
-    let row = '';
-    for (let c = 0; c < size; c++) row += 'X';
-    console.log(row);
+  let i = 0;
+  const count = parseInt(args[2]);
+  while (i < count) {
+    console.log('X'.repeat(count));
+    i++;
   }
 }
