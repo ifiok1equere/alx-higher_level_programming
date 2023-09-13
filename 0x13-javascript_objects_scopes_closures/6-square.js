@@ -8,7 +8,13 @@ class Square extends Rectangle {
   }
 
   charPrint (c = 'X') {
-    if (c === 'X') {
+    for (let i = 0; i < this.height; i++) {
+      console.log(c.repeat(this.width));
+    }
+  }
+}
+
+/* if (c === 'X') {
       super.print();
     } else {
       let i = 0;
@@ -18,6 +24,6 @@ class Square extends Rectangle {
       }
     }
   }
-}
+} */
 
 module.exports = Square;
