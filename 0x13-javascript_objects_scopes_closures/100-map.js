@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-const list = require('./100-data').list;
+const importList = require('./100-data');
 
-const newList = list.map((x) => x * list.indexOf(x));
-console.log(list);
+const newList = importList.list.map((x) => x * importList.list.indexOf(x));
+console.log(importList.list);
 console.log(newList);
