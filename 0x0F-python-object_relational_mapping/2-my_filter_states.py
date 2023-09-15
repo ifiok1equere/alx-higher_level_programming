@@ -12,29 +12,30 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
+    state_name = sys.argv[4]
 
     conn = MySQLdb.connect(
             host="localhost", port=3306, user=mysql_username,
             passwd=mysql_password, db=database_name, charset="utf8"
             )
 
-#    conn = MySQLdb.connect(
-#            host="localhost", port=3306, user="ifiok",
-#            passwd="1Fiok@equere", db="hbtn_0e_0_usa", charset="utf8"
-#            )
+    #    conn = MySQLdb.connect(
+    #            host="localhost", port=3306, user="ifiok",
+    #            passwd="1Fiok@equere", db="hbtn_0e_0_usa", charset="utf8"
+    #            )
 
-cur = conn.cursor()
+    cur = conn.cursor()
 
-query = 'SELECT * FROM states WHERE name\
-        = "{:s}" ORDER BY id ASC'.format(sys.argv[4])
+    query = 'SELECT * FROM states WHERE name\
+            = "{:s}" ORDER BY id ASC'.format(state_name)
 
-# Here is where the SQL query is done;
-cur.execute(query)
+    # Here is where the SQL query is done;
+    cur.execute(query)
 
-query_rows = cur.fetchall()
+    query_rows = cur.fetchall()
 
-for row in query_rows:
-    print(row)
+    for row in query_rows:
+        print(row)
 
-cur.close()
-conn.close()
+    cur.close()
+    conn.close()
