@@ -20,7 +20,10 @@ if __name__ == "__main__":
     cur = conn.cursor()
 
     # Here is where the SQL query is done;
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute(
+            "SELECT * FROM states WHERE name \
+                    LIKE 'N%' COLLATE utf8_bin ORDER BY id ASC"
+            )
 
     query_rows = cur.fetchall()
 
