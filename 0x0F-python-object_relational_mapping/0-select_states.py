@@ -1,9 +1,5 @@
-#!/usr/bin/python3
-'''
-This module fetches all the states from the hbtn_0e_0_usa database
-kjdjjsjhdknhjdw
-slkfmwkefk;mw;l
-'''
+#!/usr/bin/python3 
+'''This module fetches all the states from the hbtn_0e_0_usa database'''
 
 # -*- coding: utf-8
 import MySQLdb
