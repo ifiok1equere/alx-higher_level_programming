@@ -1,6 +1,7 @@
 #!/usr/bin/python3 
 ''' This module fetches all the states from the hbtn_0e_0_usa database'''
 
+# -*- coding: utf-8
 import MySQLdb
 import sys
 
@@ -15,7 +16,6 @@ conn = MySQLdb.connect(
 
 cur = conn.cursor()
 
-# HERE I have to know SQL to grab all states in my database
 cur.execute("SELECT * FROM states ORDER BY id ASC")
 
 query_rows = cur.fetchall()
