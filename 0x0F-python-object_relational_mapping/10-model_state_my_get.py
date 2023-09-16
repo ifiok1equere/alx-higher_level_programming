@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module lists all State objects from the hbtn_0e_6_usa database
+"""This module searches a State object from the hbtn_0e_6_usa database
 """
 import sys
 from model_state import Base, State
@@ -8,8 +8,8 @@ from sqlalchemy import (create_engine)
 
 
 def state_search(user, paswd, db, search_state):
-    """This function lists all the states in the states tabele of the
-    hbtn_0e_6_usa database containing the letter a.
+    """This function print the id of a states that is searched for in the
+    states tabele of the hbtn_0e_6_usa database.
     """
 
     conn_str = 'mysql+mysqldb://{}:{}@localhost:3306/{}'
