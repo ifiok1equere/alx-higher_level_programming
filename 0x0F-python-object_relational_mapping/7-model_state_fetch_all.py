@@ -9,14 +9,16 @@ if __name__ == "__main__":
     import sys
 
     user, paswd, db = sys.argv[1], sys.argv[2], sys.argv[3]
-    conn_str = 'mysql+mysqldb://{}:{}@localhost/{}'
+    conn_str = 'mysql+mysqldb://{}:{}@localhost:3306/{}'
     engine = create_engine(
-            conn_str.format(user, paswd, db, pool_pre_ping=True)
+            conn_str.format(user, paswd, db), pool_pre_ping=True
             )
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state_object in session.query(State).order_by(State.id).all():
-        print('{}: {}'.format(state_object.id, state_object.name))
+    states = session.query(State).order_by(State.id).all()
+
+    for state in states:
+        print('{}: {}'.format(state.id, state.name))
