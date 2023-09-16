@@ -22,6 +22,9 @@ def first_state(user, paswd, db):
 
     states = session.query(State).order_by(State.id).first()
 
+    if states is None:
+        print('Nothing')
+        return
     print('{}: {}'.format(states.id, states.name))
 
     session.close()
