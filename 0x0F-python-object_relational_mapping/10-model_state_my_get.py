@@ -22,7 +22,7 @@ def state_search(user, paswd, db, search_state):
 
     state = session.query(State).filter(State.name == search_state).first()
 
-    if state.name is None:
+    if state is None:
         print('Not found')
         return
     print('{}'.format(state.id))
