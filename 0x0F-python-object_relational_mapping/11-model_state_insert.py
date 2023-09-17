@@ -23,6 +23,7 @@ def add_state(user, paswd, db):
     new_state = State(name='Louisiana')
     session.add(new_state)
     session.commit()
+    print(new_state.id)
     session.close()
 
 
