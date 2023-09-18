@@ -2,8 +2,8 @@
 """This module lists all City objects from the hbtn_0e_14_usa database
 """
 import sys
-from model_city import Base, City
-from model_state import State
+from model_city import City
+from model_state import Base, State
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import (create_engine)
 
