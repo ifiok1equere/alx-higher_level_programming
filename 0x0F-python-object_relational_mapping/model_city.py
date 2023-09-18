@@ -7,6 +7,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from model_state import Base
 
+
 class City(Base):
     """This class represents the cities table in the hbtn_0e_6_usa database
     """
