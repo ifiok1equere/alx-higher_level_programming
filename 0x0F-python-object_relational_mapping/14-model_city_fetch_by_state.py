@@ -25,7 +25,7 @@ def list_states(user, paswd, db):
 
     for city in cities:
         print('{}: ({}) {}'.format(city.state.name, city.id, city.name))
-    
+
     session.close()
 
 
