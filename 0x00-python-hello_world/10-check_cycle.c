@@ -2,20 +2,17 @@
 
 int check_cycle(listint_t *list)
 {
-	listint_t *front, *back;
+	listint_t *front, *back, *front;
 
 	if (list == NULL)
 		return (0);
 
 	back = list;
-	front = list->next;
+	front = list;
 
-	while (front != NULL)
+	while (front->next != NULL)
 	{
-		if (front->next == list || front->next == back)
-			return (1);
-		back = front;
-		front = front->next;
+
+		return (0);
 	}
-	return (0);
 }

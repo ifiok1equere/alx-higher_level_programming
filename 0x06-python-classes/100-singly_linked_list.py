@@ -62,10 +62,10 @@ class SinglyLinkedList:
 
     def __str__(self):
         ptr = self.__head
-        val = ""
+        val = ''
         while ptr is not None:
             if ptr.next_node is not None:
-                val += str(ptr.data) + "\n"
+                val += str(ptr.data) + '\n'
             else:
                 val += str(ptr.data)
             ptr = ptr.next_node

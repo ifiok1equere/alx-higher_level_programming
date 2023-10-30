@@ -1,23 +1,15 @@
 '''
-
-def number_test(num):
-    return num % 2 == 0
-
-
-def receive(func, mylist=[]):
-    odd_list = []
-    for num in mylist:
-        if func(num) is False:
-            odd_list.append(num)
-
-    return odd_list
-
-x = receive(number_test, [2, 5, 7, 8, 3])
-print(x)
+def intersection(set_1={}, set_2={}):
+    list_1 = []
+    for num in set_1:
+        for item in set_2:
+            if item == num:
+                list_1.append(num)
+    return list_1
+def intersection(set_1, set_2):
 '''
-
-import random
-x = []
-for i in range(1, 101):
-    x.append(random.choice(range(1, 1001)))
-print(list(filter(lambda x: x % 9 == 0, x)))
+x = "ifiok"
+y = "equere"
+dictionary_1 = {(x, y): 'arnold', 12: 'python', 'name': 'Henok'}
+print(dictionary_1[12])
+print(dictionary_1['name'])

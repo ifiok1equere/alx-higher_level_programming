@@ -2,14 +2,13 @@
 /**
  * is_palindrome - function checks if a linked listis a palindrome
  * @head: pointer to the head node of the linked list
- * Return: return 1 for success, 0 for failure
+ * Return: return 1 for palindrome, 0 for ~palindrome
  */
 
 int is_palindrome(listint_t **head)
 {
 	int i = 1, j, k = 0, l;
-	listint_t *ptr_front = *head;
-	listint_t *ptr_back = *head;
+	listint_t *ptr_front = *head, *ptr_back = *head;
 
 	if (*head == NULL)
 		return (1);

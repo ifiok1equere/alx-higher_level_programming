@@ -3,7 +3,7 @@
 const importList = require('./100-data').list;
 
 let i = -1;
-const newList = importList.map((x) => {
+const newList_1 = importList.map((x) => {
   i++;
   return x * i;
 });
