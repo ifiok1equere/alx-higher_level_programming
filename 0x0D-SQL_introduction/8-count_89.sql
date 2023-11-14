@@ -1,2 +1,2 @@
 -- Count the number of records in the first_table table
-SELECT COUNT(id) WHERE id = 89;
+SELECT COUNT(*) WHERE id = 89;
