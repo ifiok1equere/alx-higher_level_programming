@@ -12,3 +12,6 @@ ALTER TABLE first_table ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_un
 
 -- Convert the name field in first_table to utf8mb4
 ALTER TABLE first_table MODIFY COLUMN name VARCHAR(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Add this line to your script after the previous ALTER statements
+ALTER TABLE first_table MODIFY COLUMN id INT(11);
