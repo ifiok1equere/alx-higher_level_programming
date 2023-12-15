@@ -9,7 +9,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
-if __main__ == "__main__":
+if __name__ == "__main__":
     # command line arguments for db credentials
     user = sys.argv[1]
     pwrd = sys.argv[2]
