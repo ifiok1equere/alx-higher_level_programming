@@ -34,6 +34,9 @@ if __name__ == "__main__":
 
     # query the db and print out information needed from the object returned
     result = session.query(State).filter_by(id=1).first()
-    print("{:d}: {:s}".format(result.id, result.name))
+    if result is None:
+        print()
+    else:
+        print("{:d}: {:s}".format(result.id, result.name))
 
     session.close()
