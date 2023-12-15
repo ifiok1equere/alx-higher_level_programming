@@ -35,7 +35,7 @@ if __name__ == "__main__":
     # query the db and print out information needed from the object returned
     result = session.query(State).filter_by(id=1).first()
     if not result:
-        print('')
+        print('Nothing')
     else:
         print("{}: {}".format(result.id, result.name))
 
