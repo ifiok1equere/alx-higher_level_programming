@@ -17,12 +17,13 @@ Base = declarative_base()
 
 
 class State(Base):
-    '''This is a class definition of a State
+    '''This is a class definition of a State table in
+    the hbtn_0e_6_usa database
     '''
     __tablename__ = 'states'
     id = Column(
             Integer, unique=True, primary_key=True,
-            nullable=False, autoincrement=True
+            autoincrement=True, nullable=False
             )
     name = Column(
             String(128, charset='latin1', collation='latin1_general_ci'),
