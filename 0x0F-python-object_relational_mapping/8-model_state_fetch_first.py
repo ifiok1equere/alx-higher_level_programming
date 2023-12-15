@@ -37,6 +37,6 @@ if __name__ == "__main__":
     if not result:
         print('')
     else:
-        print("{:d}: {:s}".format(result.id, result.name))
+        print("{}: {}".format(result.id, result.name))
 
     session.close()
