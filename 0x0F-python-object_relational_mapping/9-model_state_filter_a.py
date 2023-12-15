@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module lists all State objects
-that contain the letter a from the 
+that contain the letter a from the
 database hbtn_0e_6_usa
 """
 import sys
@@ -34,7 +34,12 @@ if __name__ == "__main__":
     session = Session()
 
     # query the db and print out information needed from the object returned
-    result = session.query(State).filter(State.name.like('%a%')).order_by(State.id)
+    result = session.query(State).filter(
+            State.name.like('%a%')
+            ).order_by(State.id)
+
+    # result object is a list of objects that are classes representing each row
+    # in the table
     for obj in result:
         print("{}: {}".format(obj.id, obj.name))
 
