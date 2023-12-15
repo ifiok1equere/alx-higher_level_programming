@@ -5,14 +5,14 @@ of a State and an instance Base = declarative_base()
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
 
 class State(Base):
-    '''This is a class definition of a State
+    '''This is a class
+    definition of a State
+    object mapped to the states table
     '''
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
