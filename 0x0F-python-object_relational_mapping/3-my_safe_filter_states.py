@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+'''This module makes sql queries free
+from SQL injections by parameterizing
+user inputs'''
 
 import MySQLdb
 import sys
