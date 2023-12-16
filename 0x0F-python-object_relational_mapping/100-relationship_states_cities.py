@@ -34,9 +34,9 @@ if __name__ == "__main__":
 
     # create state and city in the db
     state_1 = State(name="California")
-    city_1 = City(name="San Francisco")
-    state_1.cities = [city_1]
-    session.add(state_1)
+    city_1 = City(name="San Francisco", state_id=state_1.id)
+    state_1.cities.append(city_1)
+    session.add_all([state_1, city_1])
 
     session.commit()
     session.close()
