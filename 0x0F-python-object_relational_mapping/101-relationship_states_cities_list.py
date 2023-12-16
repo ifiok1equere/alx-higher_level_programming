@@ -39,6 +39,5 @@ if __name__ == "__main__":
         cities = state.cities
         for city in cities:
             print("    {}. {}".format(city.id, city.name))
-            
 
     session.close()
