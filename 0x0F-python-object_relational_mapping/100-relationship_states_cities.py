@@ -21,7 +21,7 @@ if __name__ == "__main__":
             'mysql+mysqldb://{}:{}@localhost:{}/{}'.format(
                 user, pwrd, port, db
                 ),
-            pool_recycle=3600
+            pool_pre_ping=True
             )
     # create all the tables defined as Base and State classes
     Base.metadata.create_all(engine)
