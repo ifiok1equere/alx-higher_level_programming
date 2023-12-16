@@ -35,9 +35,9 @@ if __name__ == "__main__":
     # run db query and fetch needed information from object returned
     result = session.query(State).all()
     for state in result:
-        print("{}. {}".format(state.id, state.name))
+        print("{}: {}".format(state.id, state.name))
         cities = state.cities
         for city in cities:
-            print("    {}. {}".format(city.id, city.name))
+            print("    {}: {}".format(city.id, city.name))
 
     session.close()
