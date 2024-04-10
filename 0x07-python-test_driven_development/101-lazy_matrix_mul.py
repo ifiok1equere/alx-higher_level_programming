@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ This module describes a function that uses numpy """
-import numpy
 
 
 def lazy_matrix_mul(m_a, m_b):
+    import numpy as np
     """
     This function uses numpy to operate
     on two matrices by computing their product
@@ -16,4 +16,4 @@ def lazy_matrix_mul(m_a, m_b):
         New matrix that is a result of the product
     """
 
-    return numpy.multiply(m_a, m_b)
+    return (np.dot(m_a, m_b))
