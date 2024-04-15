@@ -11,7 +11,6 @@ def lookup(obj):
 
     Return:
         Attribute and methods of the object
-        instance
     """
 
-    return(dir(obj))
+    return (dir(obj))
