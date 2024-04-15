@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """
-This function checks if an object
-is an instance or sub-instance of a specified class
-"""
+This function checks if an object is a sub-instance"""
 
 
 def inherits_from(obj, a_class):
