@@ -77,6 +77,15 @@ prints a sorted list.
 >>> my_list6.print_sorted()
 [0]
 
+>>> my_list7 = MyList()
+>>> my_list7.append(True)
+>>> my_list7.append(False)
+
+>>> my_list7.print_sorted()
+[False, True]
+
+>>> print(my_list7)
+[True, False]
 
 
 """
