@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-
-'''
-This function returns the list of available
-attributes and methods of an object.
-'''
+"""This function returns the list of object attr's and meth's"""
 
 
 def lookup(obj):
