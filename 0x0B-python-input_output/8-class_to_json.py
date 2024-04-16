@@ -2,6 +2,7 @@
 """This module defines a function"""
 import json
 
+
 def class_to_json(obj):
     """This function serializes an object
 
