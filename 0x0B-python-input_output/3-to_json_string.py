@@ -2,6 +2,7 @@
 """This module serializes"""
 import json
 
+
 def to_json_string(my_obj):
     """Function appends to a text file (UTF8)
 
