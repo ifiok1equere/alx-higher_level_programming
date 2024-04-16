@@ -5,7 +5,7 @@
 def add_attribute(obj, name, value):
     """Function dtermines when an attribute can be added"""
 
-    if obj.__class__.__module__ == "builtins" and type(name) == str:
+    if obj.__class__.__module__ == 'builtins':
         raise TypeError("can't add new attribute")
     else:
         setattr(obj, name, value)
