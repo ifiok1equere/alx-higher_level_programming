@@ -6,13 +6,12 @@ from models.base import Base
 from models.rectangle import Rectangle
 
 
-class TestBase(unittest.TestCase):
+class TestRectangle(unittest.TestCase):
     """This class defines series test suite"""
 
     def setUp(self):
         """This method creates Base class instances"""
 
-        print(1)
         self.r1 = Rectangle(10, 2)
         self.r2 = Rectangle(2, 10)
         self.r3 = Rectangle(10, 2, 0, 0, 12)
@@ -24,7 +23,6 @@ class TestBase(unittest.TestCase):
         their id attributes
         """
 
-        print(8)
         Base._Base__nb_objects = 0
 
     def test_class_type(self):
@@ -32,11 +30,10 @@ class TestBase(unittest.TestCase):
         was created correctly
         """
 
-        print(2)
         self.assertEqual(self.r1.__class__.__name__, "Rectangle")
         self.assertEqual(type(self.r1), Rectangle)
-        self.assertTrue(isinstance(self.r1, Rectangle))
-        self.assertTrue(isinstance(self.r1, Base))
+        self.assertIsInstance(self.r1, Rectangle)
+        self.assertIsInstance(self.r1, Base)
 
     def test_inheritance(self):
         """This method tests for inheritance"""
@@ -46,7 +43,6 @@ class TestBase(unittest.TestCase):
     def test_attribute(self):
         """Test to ensure attribute is correctly instantiated"""
 
-        print(3)
         self.assertTrue(hasattr(self.r1, 'id'))
         self.assertTrue(hasattr(self.r1, 'width'))
         self.assertTrue(hasattr(self.r1, 'height'))
@@ -57,7 +53,6 @@ class TestBase(unittest.TestCase):
     def test_unique_attribute_values(self):
         """The method tests if unique id' are created for each instance"""
 
-        print(4)
         self.assertEqual(self.r1.id, 1)
         self.assertEqual(self.r2.id, 2)
         self.assertEqual(self.r1.width, 10)
@@ -71,7 +66,6 @@ class TestBase(unittest.TestCase):
         """This method tests if instances have a custom id when id is not
         None"""
 
-        print(5)
         self.assertEqual(self.r4.id, 3)
         self.assertEqual(self.r4.x, 2)
         self.assertEqual(self.r4.y, 3)
@@ -81,7 +75,6 @@ class TestBase(unittest.TestCase):
     def test_incremental_id(self):
         """This method tests if the id attribute is incremented correctly"""
 
-        print(6)
         self.assertEqual(self.r1.id, 1)
         self.assertEqual(self.r2.id, 2)
         self.assertEqual(self.r3.id, 12)
