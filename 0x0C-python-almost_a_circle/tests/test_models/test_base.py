@@ -4,6 +4,7 @@
 import unittest
 from models.base import Base
 
+
 class TestBase(unittest.TestCase):
     """This class defines series test suite"""
 
@@ -31,7 +32,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(self.b1.__class__.__name__, "Base")
         self.assertEqual(type(self.b1), Base)
         self.assertTrue(isinstance(self.b1, Base))
-    
+
     def test_attribute(self):
         """Test to ensure attribute is correctly instantiated"""
 
@@ -39,7 +40,7 @@ class TestBase(unittest.TestCase):
 
     def test_unique_id(self):
         """The method tests if unique id' are created for each instance"""
-        
+
         self.assertEqual(self.b1.id, 1)
         self.assertEqual(self.b2.id, 2)
         self.assertEqual(self.b3.id, 3)
@@ -49,7 +50,7 @@ class TestBase(unittest.TestCase):
         None"""
 
         self.assertEqual(self.b4.id, 12)
-        
+
     def test_incremental_id(self):
         """This method tests if the id attribute is incremented correctly"""
 

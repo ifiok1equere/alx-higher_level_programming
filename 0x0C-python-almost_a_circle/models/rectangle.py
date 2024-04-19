@@ -39,7 +39,7 @@ class Rectangle(Base):
         """Height Setter Method"""
 
         self.__height = height
-    
+
     @property
     def x(self):
         """ X Co-ordinate Getter Method"""

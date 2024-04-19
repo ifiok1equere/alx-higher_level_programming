@@ -43,8 +43,6 @@ class TestBase(unittest.TestCase):
 
         self.assertTrue(issubclass(Rectangle, Base))
 
-
-    
     def test_attribute(self):
         """Test to ensure attribute is correctly instantiated"""
 
@@ -58,7 +56,7 @@ class TestBase(unittest.TestCase):
 
     def test_unique_attribute_values(self):
         """The method tests if unique id' are created for each instance"""
-  
+
         print(4)
         self.assertEqual(self.r1.id, 1)
         self.assertEqual(self.r2.id, 2)
@@ -79,7 +77,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(self.r4.y, 3)
         self.assertEqual(self.r4.x, 2)
         self.assertEqual(self.r4.y, 3)
-        
+
     def test_incremental_id(self):
         """This method tests if the id attribute is incremented correctly"""
 
