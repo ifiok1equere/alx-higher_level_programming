@@ -333,3 +333,113 @@ class TestRectangle(unittest.TestCase):
 
         # reset stdout to terminal output
         sys.stdout = sys.__stdout__
+
+    def test_update(self):
+        """Tests for the update method"""
+
+        self.tearDown()
+
+        self.r1 = Rectangle(10, 10, 10, 10)
+
+        # Test for r1 instance
+
+        self.assertEqual(self.r1.id, 1)
+        self.assertEqual(self.r1.width, 10)
+        self.assertEqual(self.r1.height, 10)
+        self.assertEqual(self.r1.x, 10)
+        self.assertEqual(self.r1.y, 10)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (1) 10/10 - 10/10"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 1st update
+
+        self.r1.update(89)
+
+        self.assertEqual(self.r1.id, 89)
+        self.assertEqual(self.r1.width, 10)
+        self.assertEqual(self.r1.height, 10)
+        self.assertEqual(self.r1.x, 10)
+        self.assertEqual(self.r1.y, 10)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (89) 10/10 - 10/10"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 2nd update
+
+        self.r1.update(89, 2)
+
+        self.assertEqual(self.r1.id, 89)
+        self.assertEqual(self.r1.width, 2)
+        self.assertEqual(self.r1.height, 10)
+        self.assertEqual(self.r1.x, 10)
+        self.assertEqual(self.r1.y, 10)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (89) 10/10 - 2/10"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 3rd update
+
+        self.r1.update(89, 2, 3)
+
+        self.assertEqual(self.r1.id, 89)
+        self.assertEqual(self.r1.width, 2)
+        self.assertEqual(self.r1.height, 3)
+        self.assertEqual(self.r1.x, 10)
+        self.assertEqual(self.r1.y, 10)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (89) 10/10 - 2/3"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 4th update
+
+        self.r1.update(89, 2, 3, 4)
+
+        self.assertEqual(self.r1.id, 89)
+        self.assertEqual(self.r1.width, 2)
+        self.assertEqual(self.r1.height, 3)
+        self.assertEqual(self.r1.x, 4)
+        self.assertEqual(self.r1.y, 10)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (89) 4/10 - 2/3"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 5th update
+
+        self.r1.update(89, 2, 3, 4, 5)
+
+        self.assertEqual(self.r1.id, 89)
+        self.assertEqual(self.r1.width, 2)
+        self.assertEqual(self.r1.height, 3)
+        self.assertEqual(self.r1.x, 4)
+        self.assertEqual(self.r1.y, 5)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (89) 4/5 - 2/3"
+        self.assertEqual(printed_output, expected_output)
+
+        # reset stdout to terminal output
+        sys.stdout = sys.__stdout__
