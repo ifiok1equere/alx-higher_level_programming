@@ -276,3 +276,60 @@ class TestRectangle(unittest.TestCase):
 
         # reset stdout to terminal output
         sys.stdout = sys.__stdout__
+
+    def test_dispay_updated(self):
+        """This method tests for the updated rectangle display method
+        """
+
+        # Reset class variable _nd_instance so id count is not affected
+        # with new instance creation
+        self.tearDown()
+
+        self.r1 = Rectangle(2, 3, 2, 2)
+        self.r2 = Rectangle(3, 2, 1, 0)
+        self.r3 = Rectangle(2, 3)
+        self.r4 = Rectangle(3, 2, 0, 2)
+        self.r5 = Rectangle(3, 2, 2)
+
+        # Test for r1 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        self.r1.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "\n\n  ##\n  ##\n  ##"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r2 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        self.r2.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = " ###\n ###"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r3 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        self.r3.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "##\n##\n##"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r4 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        self.r4.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "\n\n###\n###"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r5 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        self.r5.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "  ###\n  ###"
+        self.assertEqual(printed_output, expected_output)
+
+        # reset stdout to terminal output
+        sys.stdout = sys.__stdout__
