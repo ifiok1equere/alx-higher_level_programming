@@ -4,6 +4,8 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
 
 
 class TestRectangle(unittest.TestCase):
@@ -84,6 +86,7 @@ class TestRectangle(unittest.TestCase):
     def test_input_validation(self):
         """This method tests for valid inputs during class instantiation"""
 
+        # Test suite for TypeError
         with self.assertRaises(TypeError):
             self.r5 = Rectangle(1.035, 2)
         with self.assertRaises(TypeError):
@@ -131,6 +134,7 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.r40 = Rectangle(1)
 
+        # Test suite for ValueError
         with self.assertRaises(ValueError):
             self.r18 = Rectangle(-1, 2)
         with self.assertRaises(ValueError):
@@ -178,16 +182,53 @@ class TestRectangle(unittest.TestCase):
         except Exception as e:
             self.assertTrue(str(e) == "y must be >= 0")
 
-    '''
     def test_area(self):
         """This method tests for correctness of computed rectangle area"""
 
-        r1 = Rectangle(3, 2)
-        self.assertEqual(r1.area(), 6)
+        self.r1 = Rectangle(3, 2)
+        self.assertEqual(self.r1.area(), 6)
 
-        r2 = Rectangle(2, 10)
+        self.r2 = Rectangle(2, 10)
         self.assertEqual(self.r2.area(), 20)
 
         self.r3 = Rectangle(8, 7, 0, 0, 12)
-        self.assertEqual(self.r3.area())
-    '''
+        self.assertEqual(self.r3.area(), 56)
+
+    def test_display(self):
+        """Test for correct rectangle display"""
+
+        r1 = Rectangle(4, 6)
+        r2 = Rectangle(2, 2)
+        r3 = Rectangle(6, 4)
+
+        # Test for r1 instance
+        # create StringIO object
+        std_out_capture = StringIO()
+        # re-direct stdout to StringIO object
+        sys.stdout = std_out_capture
+        # call method to print to stdout (i.e to StringIO object)
+        r1.display()
+        # store stdout in a variable
+        printed_output = std_out_capture.getvalue()
+        # output to be tested against
+        expected_output = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r2 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        r2.display()
+        printed_output = std_out_capture.getvalue()
+        expected_output = "##\n##\n"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r3 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        r3.display()
+        printed_output = std_out_capture.getvalue()
+        expected_output = "######\n######\n######\n######\n"
+        self.assertEqual(printed_output, expected_output)
+
+        # reset stdout to terminal output
+        sys.stdout = sys.__stdout__
