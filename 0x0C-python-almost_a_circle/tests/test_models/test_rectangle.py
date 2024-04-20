@@ -20,6 +20,8 @@ class TestRectangle(unittest.TestCase):
         self.r4 = Rectangle(10, 2, 2, 3)
         self.r33 = Rectangle(10, 2, 6)
 
+        Base._Base__nb_objects = 0
+
     def tearDown(self):
         """This method resets class attribute to 0 so that
         new instances can have non-incremental values for
@@ -161,24 +163,24 @@ class TestRectangle(unittest.TestCase):
             self.r29 = Rectangle(5, 6, -2, -3, 7)
 
         try:
-            Rectangle(10, "2")
+            self.r = Rectangle(10, "2")
         except Exception as e:
             self.assertEqual(str(e), "height must be an integer")
 
         try:
-            r = Rectangle(10, 2)
-            r.width = -10
+            self.r = Rectangle(10, 2)
+            self.r.width = -10
         except Exception as e:
             self.assertTrue(str(e) == "width must be > 0")
 
         try:
-            r = Rectangle(10, 2)
-            r.x = {}
+            self.r = Rectangle(10, 2)
+            self.r.x = {}
         except Exception as e:
             self.assertTrue(str(e) == "x must be an integer")
 
         try:
-            Rectangle(10, 2, 3, -1)
+            self.r = Rectangle(10, 2, 3, -1)
         except Exception as e:
             self.assertTrue(str(e) == "y must be >= 0")
 
@@ -197,9 +199,9 @@ class TestRectangle(unittest.TestCase):
     def test_display(self):
         """Test for correct rectangle display"""
 
-        r1 = Rectangle(4, 6)
-        r2 = Rectangle(2, 2)
-        r3 = Rectangle(6, 4)
+        self.r1 = Rectangle(4, 6)
+        self.r2 = Rectangle(2, 2)
+        self.r3 = Rectangle(6, 4)
 
         # Test for r1 instance
         # create StringIO object
@@ -207,27 +209,63 @@ class TestRectangle(unittest.TestCase):
         # re-direct stdout to StringIO object
         sys.stdout = std_out_capture
         # call method to print to stdout (i.e to StringIO object)
-        r1.display()
-        # store stdout in a variable
-        printed_output = std_out_capture.getvalue()
+        self.r1.display()
+        # store stdout in a variable after stripping trailing newline character
+        printed_output = std_out_capture.getvalue().rstrip('\n')
         # output to be tested against
-        expected_output = "####\n####\n####\n####\n####\n####\n"
+        expected_output = "####\n####\n####\n####\n####\n####"
         self.assertEqual(printed_output, expected_output)
 
         # Test for r2 instance
         std_out_capture = StringIO()
         sys.stdout = std_out_capture
-        r2.display()
-        printed_output = std_out_capture.getvalue()
-        expected_output = "##\n##\n"
+        self.r2.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "##\n##"
         self.assertEqual(printed_output, expected_output)
 
         # Test for r3 instance
         std_out_capture = StringIO()
         sys.stdout = std_out_capture
-        r3.display()
-        printed_output = std_out_capture.getvalue()
-        expected_output = "######\n######\n######\n######\n"
+        self.r3.display()
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "######\n######\n######\n######"
+        self.assertEqual(printed_output, expected_output)
+
+        # reset stdout to terminal output
+        sys.stdout = sys.__stdout__
+
+    def test_str(self):
+        """This method tests for the unofficial string rep of the rectangle
+        object
+        """
+
+        self.r40 = Rectangle(4, 6, 2, 1, 12)
+        self.r41 = Rectangle(5, 5, 1)
+        self.r42 = Rectangle(7, 6)
+
+        # Test for r1 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r40)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (12) 2/1 - 4/6"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r2 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r41)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (1) 1/0 - 5/5"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for r3 instance
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r42)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (2) 0/0 - 7/6"
         self.assertEqual(printed_output, expected_output)
 
         # reset stdout to terminal output
