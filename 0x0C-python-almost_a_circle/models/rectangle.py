@@ -95,3 +95,23 @@ class Rectangle(Base):
 
         for _ in range(self.height):
             print("#" * self.width)
+        """
+        for _ in range(self.__y):
+            print()
+        for _ in range(self.__height - 1):
+            print(" " * self.__x + "#" * self.__width)
+        print(" " * self.__x + "#" * self.__width)
+        """
+
+    def __str__(self):
+        """The unofficial representation of the rectangle object"""
+
+        cls_name = self.__class__.__name__
+        id_ = self.id
+        width = self.width
+        height = self.height
+        x = self.x
+        y = self.y
+        return "[{:s}] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+                cls_name, id_, x, y, width, height
+                )
