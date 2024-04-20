@@ -20,8 +20,6 @@ class TestRectangle(unittest.TestCase):
         self.r4 = Rectangle(10, 2, 2, 3)
         self.r33 = Rectangle(10, 2, 6)
 
-        Base._Base__nb_objects = 0
-
     def tearDown(self):
         """This method resets class attribute to 0 so that
         new instances can have non-incremental values for
@@ -199,6 +197,10 @@ class TestRectangle(unittest.TestCase):
     def test_display(self):
         """Test for correct rectangle display"""
 
+        # Reset class variable _nd_instance so id count is not affected
+        # with new instance creation
+        self.tearDown()
+
         self.r1 = Rectangle(4, 6)
         self.r2 = Rectangle(2, 2)
         self.r3 = Rectangle(6, 4)
@@ -239,6 +241,10 @@ class TestRectangle(unittest.TestCase):
         """This method tests for the unofficial string rep of the rectangle
         object
         """
+
+        # Reset class variable _nd_instance so id count is not affected
+        # with new instance creation
+        self.tearDown()
 
         self.r40 = Rectangle(4, 6, 2, 1, 12)
         self.r41 = Rectangle(5, 5, 1)
