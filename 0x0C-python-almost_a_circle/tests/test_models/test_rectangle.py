@@ -85,41 +85,75 @@ class TestRectangle(unittest.TestCase):
         """This method tests for valid inputs during class instantiation"""
 
         with self.assertRaises(TypeError):
-            self.r5 = Rectangle("ifiok", 2)
+            self.r5 = Rectangle(1.035, 2)
+        with self.assertRaises(TypeError):
             self.r5 = Rectangle(3.5, 2)
+        with self.assertRaises(TypeError):
             self.r6 = Rectangle(15, "equere")
+        with self.assertRaises(TypeError):
             self.r7 = Rectangle(15, 16.9)
+        with self.assertRaises(TypeError):
             self.r8 = Rectangle(15.0, 16.9)
+        with self.assertRaises(TypeError):
             self.r9 = Rectangle("ifiok", "equere")
+        with self.assertRaises(TypeError):
             self.r10 = Rectangle("1", 2)
+        with self.assertRaises(TypeError):
             self.r11 = Rectangle(8, "2")
+        with self.assertRaises(TypeError):
             self.r12 = Rectangle("0", "0")
+        with self.assertRaises(TypeError):
             self.r13 = Rectangle()
+        with self.assertRaises(TypeError):
             self.r14 = Rectangle(3, 2, "2", 3)
+        with self.assertRaises(TypeError):
             self.r15 = Rectangle(3, 2, 2, "3")
+        with self.assertRaises(TypeError):
             self.r16 = Rectangle(3, 2, "2", "3")
+        with self.assertRaises(TypeError):
             self.r17 = Rectangle(3, 2, "2", "3")
+        with self.assertRaises(TypeError):
             self.r30 = Rectangle(5, 6, None, -3, 7)
+        with self.assertRaises(TypeError):
             self.r31 = Rectangle(5, 6, [2])
+        with self.assertRaises(TypeError):
             self.r32 = Rectangle(5, 6, {}, 4)
+        with self.assertRaises(TypeError):
             self.r34 = Rectangle("", 6, "", 4)
+        with self.assertRaises(TypeError):
             self.r35 = Rectangle("", 6, 7, 54)
+        with self.assertRaises(TypeError):
             self.r36 = Rectangle(5, 6, 7, "")
+        with self.assertRaises(TypeError):
             self.r37 = Rectangle(None, 6, 7, 3)
+        with self.assertRaises(TypeError):
             self.r38 = Rectangle(1, None, 7, 0)
+        with self.assertRaises(TypeError):
+            self.r40 = Rectangle(1)
 
         with self.assertRaises(ValueError):
             self.r18 = Rectangle(-1, 2)
+        with self.assertRaises(ValueError):
             self.r19 = Rectangle(1, -2)
+        with self.assertRaises(ValueError):
             self.r20 = Rectangle(-1, -2)
+        with self.assertRaises(ValueError):
             self.r21 = Rectangle(0, 2)
+        with self.assertRaises(ValueError):
             self.r22 = Rectangle(1, 0)
+        with self.assertRaises(ValueError):
             self.r23 = Rectangle(0, 0)
-            self.r24 = Rectangle(5, 6, 0, 3, 7)
-            self.r25 = Rectangle(5, 6, 4, 0, 0)
-            self.r26 = Rectangle(5, 6, 0, 0)
+        with self.assertRaises(ValueError):
+            self.r24 = Rectangle(5, -6, 0, 3, 7)
+        with self.assertRaises(ValueError):
+            self.r25 = Rectangle(5, 6, -4, 0, 0)
+        with self.assertRaises(ValueError):
+            self.r26 = Rectangle(-5, -6, -4, -1)
+        with self.assertRaises(ValueError):
             self.r27 = Rectangle(5, 6, -1, 3, 7)
+        with self.assertRaises(ValueError):
             self.r28 = Rectangle(5, 6, 8, -5)
+        with self.assertRaises(ValueError):
             self.r29 = Rectangle(5, 6, -2, -3, 7)
 
         try:
@@ -143,3 +177,17 @@ class TestRectangle(unittest.TestCase):
             Rectangle(10, 2, 3, -1)
         except Exception as e:
             self.assertTrue(str(e) == "y must be >= 0")
+
+    '''
+    def test_area(self):
+        """This method tests for correctness of computed rectangle area"""
+
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+        r2 = Rectangle(2, 10)
+        self.assertEqual(self.r2.area(), 20)
+
+        self.r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(self.r3.area())
+    '''
