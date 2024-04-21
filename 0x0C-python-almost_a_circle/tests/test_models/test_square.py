@@ -341,3 +341,208 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(self.s3.area(), 9)
         self.s1.size = 10
         self.assertEqual(self.s1.area(), 100)
+
+    def test_update(self):
+        """Tests for the update method"""
+
+        # Test for r1 instance
+
+        self.si = Square(5)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 5)
+        self.assertEqual(self.s1.height, 5)
+        self.assertEqual(self.s1.x, 0)
+        self.assertEqual(self.s1.y, 0)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 0/0 - 5"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 1st update
+
+        self.s1.update(10)
+
+        self.assertEqual(self.s1.id, 10)
+        self.assertEqual(self.s1.width, self.s1.size)
+        self.assertEqual(self.s1.height, self.s1.size)
+        self.assertEqual(self.s1.height, 5)
+        self.assertEqual(self.s1.height, 5)
+        self.assertEqual(self.s1.size, 5)
+        self.assertEqual(self.s1.x, 0)
+        self.assertEqual(self.s1.y, 0)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (10) 0/0 - 5"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 2nd update
+
+        self.s1.update(1, 2)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 2)
+        self.assertEqual(self.s1.height, 2)
+        self.assertEqual(self.s1.size, 2)
+        self.assertEqual(self.s1.x, 0)
+        self.assertEqual(self.s1.y, 0)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 0/0 - 2"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 3rd update
+
+        self.s1.update(1, 2, 3)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 2)
+        self.assertEqual(self.s1.height, 2)
+        self.assertEqual(self.s1.size, 2)
+        self.assertEqual(self.s1.x, 3)
+        self.assertEqual(self.s1.y, 0)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 3/0 - 2"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 4th update
+
+        self.s1.update(1, 2, 3, 4)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 2)
+        self.assertEqual(self.s1.height, 2)
+        self.assertEqual(self.s1.size, 2)
+        self.assertEqual(self.s1.x, 3)
+        self.assertEqual(self.s1.y, 4)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 3/4 - 2"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 5th update
+
+        self.s1.update(x=12)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 2)
+        self.assertEqual(self.s1.height, 2)
+        self.assertEqual(self.s1.size, 2)
+        self.assertEqual(self.s1.x, 12)
+        self.assertEqual(self.s1.y, 4)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 12/4 - 2"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 6th update
+
+        self.s1.update(size=7, y=1)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 7)
+        self.assertEqual(self.s1.height, 7)
+        self.assertEqual(self.s1.size, 7)
+        self.assertEqual(self.s1.x, 12)
+        self.assertEqual(self.s1.y, 1)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 12/1 - 7"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 7th update
+
+        self.s1.update(size=7, id=89, y=1)
+
+        self.assertEqual(self.s1.id, 89)
+        self.assertEqual(self.s1.width, 7)
+        self.assertEqual(self.s1.height, 7)
+        self.assertEqual(self.s1.size, 7)
+        self.assertEqual(self.s1.x, 12)
+        self.assertEqual(self.s1.y, 1)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (89) 12/1 - 7"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 8th update
+
+        self.s1.update(size=7, id=89, y=1, x=90)
+
+        self.assertEqual(self.s1.id, 89)
+        self.assertEqual(self.s1.width, 7)
+        self.assertEqual(self.s1.height, 7)
+        self.assertEqual(self.s1.size, 7)
+        self.assertEqual(self.s1.x, 90)
+        self.assertEqual(self.s1.y, 1)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (89) 90/1 - 7"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 9th update
+
+        self.s1.update(1, 3, 6, size=7, id=89, y=5)
+
+        self.assertEqual(self.s1.id, 1)
+        self.assertEqual(self.s1.width, 3)
+        self.assertEqual(self.s1.height, 3)
+        self.assertEqual(self.s1.size, 3)
+        self.assertEqual(self.s1.x, 6)
+        self.assertEqual(self.s1.y, 1)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 6/1 - 3"
+        self.assertEqual(printed_output, expected_output)
+
+        # Test for 10th update
+
+        self.s1.update(4, 2, 23, 9, x=8, size=7, id=89, y=5)
+
+        self.assertEqual(self.s1.id, 4)
+        self.assertEqual(self.s1.width, 2)
+        self.assertEqual(self.s1.height, 2)
+        self.assertEqual(self.s1.size, 2)
+        self.assertEqual(self.s1.x, 23)
+        self.assertEqual(self.s1.y, 9)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (4) 23/9 - 2"
+        self.assertEqual(printed_output, expected_output)
+
+        # reset stdout to terminal output
+        sys.stdout = sys.__stdout__
