@@ -3,6 +3,7 @@
 
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestBase(unittest.TestCase):
@@ -60,3 +61,26 @@ class TestBase(unittest.TestCase):
         self.assertNotEqual(self.b4.id, 4)
         self.assertEqual(self.b5.id, 4)
         self.assertEqual(self.b6.id, 5)
+
+    def test_to_json_string(self):
+        """Test for json string representation"""
+
+        self.r1 = Rectangle(10, 7, 2, 8)
+        dictionary = self.r1.to_dictionary()
+
+        with self.assertRaises(TypeError):
+            self.json_dictionary = Base.to_json_string()
+        with self.assertRaises(TypeError):
+            self.json_dictionary = Base.to_json_string(2)
+
+        self.json_dictionary = Base.to_json_string(None)
+        self.assertEqual(self.json_dictionary, "[]")
+
+        self.json_dictionary = Base.to_json_string([])
+        self.assertEqual(self.json_dictionary, "[]")
+
+        self.json_dictionary = Base.to_json_string([{}])
+        self.assertEqual(self.json_dictionary, "[{}]")
+
+        self.json_dictionary = Base.to_json_string([dictionary])
+        self.assertTrue(type(self.json_dictionary) == str)
