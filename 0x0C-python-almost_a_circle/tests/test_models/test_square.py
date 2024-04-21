@@ -48,7 +48,7 @@ class TestSquare(unittest.TestCase):
     def test_attribute(self):
         """Test to ensure attribute is correctly instantiated"""
 
-        self.assertFalse(hasattr(self.s1, 'size'))
+        self.assertTrue(hasattr(self.s1, 'size'))
         self.assertTrue(hasattr(self.s1, 'id'))
         self.assertTrue(hasattr(self.s1, 'width'))
         self.assertTrue(hasattr(self.s1, 'height'))
@@ -189,6 +189,26 @@ class TestSquare(unittest.TestCase):
         except Exception as e:
             self.assertTrue(str(e) == "y must be >= 0")
 
+        try:
+            self.s = Square(-10, 2, -3, -1)
+        except Exception as e:
+            self.assertTrue(str(e) == "width must be > 0")
+
+        try:
+            self.s = Square(10, 2, -3, -1)
+        except Exception as e:
+            self.assertFalse(str(e) == "height must be > 0")
+
+        try:
+            self.s.zize = -3
+        except Exception as e:
+            self.assertTrue(str(e) == "width must be > 0")
+
+        try:
+            self.s.size = ""
+        except Exception as e:
+            self.assertTrue(str(e) == "width must be an integer")
+
     def test_display(self):
         """Test for correct square display"""
 
@@ -312,3 +332,12 @@ class TestSquare(unittest.TestCase):
 
         # reset stdout to terminal output
         sys.stdout = sys.__stdout__
+
+    def test_area(self):
+        """This method tests for correctness of computed square area"""
+
+        self.assertEqual(self.s1.area(), 25)
+        self.assertEqual(self.s2.area(), 4)
+        self.assertEqual(self.s3.area(), 9)
+        self.s1.size = 10
+        self.assertEqual(self.s1.area(), 100)
