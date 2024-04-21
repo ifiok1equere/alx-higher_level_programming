@@ -531,3 +531,50 @@ class TestRectangle(unittest.TestCase):
 
         # reset stdout to terminal output
         sys.stdout = sys.__stdout__
+
+    def test_to_dictionary(self):
+        """Test for dictionary representation of Square class"""
+
+        self.tearDown()
+
+        self.r1 = Rectangle(10, 2, 1, 9)
+        self.r1_dictionary = self.r1.to_dictionary()
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (1) 1/9 - 10/2"
+        self.assertEqual(printed_output, expected_output)
+
+        self.assertTrue(type(self.r1_dictionary), "dict")
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r1_dictionary)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "{'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}"
+        self.assertEqual(printed_output, expected_output)
+
+        self.r2 = Rectangle(1, 1)
+        self.assertEqual(self.r2.id, 2)
+        self.assertEqual(self.r2.width, 1)
+        self.assertEqual(self.r2.height, 1)
+        self.assertEqual(self.r2.x, 0)
+        self.assertEqual(self.r2.y, 0)
+
+        self.r2.update(**self.r1_dictionary)
+        self.assertEqual(self.r2.id, 1)
+        self.assertEqual(self.r2.width, 10)
+        self.assertEqual(self.r2.height, 2)
+        self.assertEqual(self.r2.x, 1)
+        self.assertEqual(self.r2.y, 9)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r2)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (1) 1/9 - 10/2"
+        self.assertEqual(printed_output, expected_output)
+
+        self.assertFalse(self.r1 == self.r2)
