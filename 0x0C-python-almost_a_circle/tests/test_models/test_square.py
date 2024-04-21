@@ -546,3 +546,58 @@ class TestSquare(unittest.TestCase):
 
         # reset stdout to terminal output
         sys.stdout = sys.__stdout__
+
+    def test_to_dictionary(self):
+        """Test for dictionary representation of Square class"""
+
+        self.tearDown()
+
+        self.s1 = Square(10, 2, 1)
+        self.s1_dictionary = self.s1.to_dictionary()
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 2/1 - 10"
+        self.assertEqual(printed_output, expected_output)
+
+        self.assertTrue(type(self.s1_dictionary), "dict")
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s1_dictionary)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "{'id': 1, 'x': 2, 'size': 10, 'y': 1}"
+        self.assertEqual(printed_output, expected_output)
+
+        self.s2 = Square(1, 1)
+        self.assertEqual(self.s2.id, 2)
+        self.assertEqual(self.s2.width, 1)
+        self.assertEqual(self.s2.height, 1)
+        self.assertEqual(self.s2.x, 1)
+        self.assertEqual(self.s2.y, 0)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s2)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (2) 1/0 - 1"
+        self.assertEqual(printed_output, expected_output)
+
+        self.s2.update(**self.s1_dictionary)
+
+        self.assertEqual(self.s2.id, 1)
+        self.assertEqual(self.s2.width, 10)
+        self.assertEqual(self.s2.height, 10)
+        self.assertEqual(self.s2.x, 2)
+        self.assertEqual(self.s2.y, 1)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.s2)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Square] (1) 2/1 - 10"
+        self.assertEqual(printed_output, expected_output)
+
+        self.assertFalse(self.s1 == self.s2)
