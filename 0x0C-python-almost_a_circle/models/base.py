@@ -151,6 +151,8 @@ class Base():
         # turtle speed
         pen.speed(1)
 
+        pen.hideturtle()
+
         # shape tracing and dimensioning
         for instance in list_rectangles:
             pen.pendown()
