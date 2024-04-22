@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """THis module defines a model blueprint"""
 import json
+import os
 
 
 class Base():
@@ -62,3 +63,20 @@ class Base():
             dummy_instance = cls(5)
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """Reconstruct list of instances from a file"""
+
+        filename = "{:s}.json".format(cls.__name__)
+
+        if os.path.exists(filename) is False:
+            print("yes")
+            return []
+        with open(filename, "r", encoding="utf-8") as file:
+            json_string = file.read()
+            json_to_list_of_dict = cls.from_json_string(json_string)
+            instance_list = []
+            for dict_ in json_to_list_of_dict:
+                instance_list.append(cls.create(**dict_))
+        return instance_list
