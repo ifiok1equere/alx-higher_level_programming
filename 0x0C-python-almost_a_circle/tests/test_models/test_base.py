@@ -217,3 +217,44 @@ class TestBase(unittest.TestCase):
 
         # reset stdout to terminal output
         sys.stdout = sys.__stdout__
+
+    def test_load_from_file(self):
+        """Test for instances reconstructed from file"""
+
+        self.tearDown()
+
+        # Test for Rectangle Class
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+
+        list_rectangles_input = [self.r1, self.r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+        print(list_rectangles_output)
+        print(list_rectangles_input)
+
+        for rect in list_rectangles_input:
+            self.assertEqual(type(rect), Rectangle)
+            self.assertTrue(isinstance(rect, Rectangle))
+
+        for rect in list_rectangles_output:
+            self.assertEqual(type(rect), Rectangle)
+            self.assertTrue(isinstance(rect, Rectangle))
+
+        self.assertFalse(list_rectangles_input is list_rectangles_output)
+        self.assertFalse(list_rectangles_input[0] is list_rectangles_output[0])
+
+        # Test for Square Class
+        self.s1 = Square(5)
+        self.s2 = Square(7, 9, 1)
+
+        list_squares_input = [self.s1, self.s2]
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file()
+
+        for square in list_squares_input:
+            self.assertEqual(type(square), Square)
+            self.assertTrue(isinstance(square, Square))
+
+        self.assertFalse(list_squares_input is list_squares_output)
+        self.assertFalse(list_squares_input[0] is list_squares_output[0])
