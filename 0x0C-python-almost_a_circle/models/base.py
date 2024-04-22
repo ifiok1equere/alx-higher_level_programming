@@ -35,7 +35,7 @@ class Base():
 
         if list_objs is None:
             with open(filename, "w", encoding="utf-8") as file:
-                file.write([])
+                file.write("[]")
         else:
             with open(filename, "w", encoding="utf-8") as file:
                 new_list = []
