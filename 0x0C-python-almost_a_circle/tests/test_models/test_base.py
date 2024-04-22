@@ -171,7 +171,13 @@ class TestBase(unittest.TestCase):
         s1_dict = s1.to_dictionary()
 
         json_string = Base.to_json_string([r1_dict, s1_dict])
-        json_to_obj = Base.from_json_string(json_string)
 
+        json_to_obj = Base.from_json_string(json_string)
         self.assertTrue(type(json_to_obj), list)
         self.assertTrue(type(json_to_obj[0]), dict)
+
+        json_to_obj = Base.from_json_string([])
+        self.assertEqual(json_to_obj, [])
+
+        json_to_obj = Base.from_json_string(None)
+        self.assertEqual(json_to_obj, [])
