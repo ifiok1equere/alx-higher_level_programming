@@ -340,7 +340,6 @@ class TestBase(unittest.TestCase):
         list_squares_input = [self.s1, self.s2]
         Square.save_to_file(list_squares_input)
         list_squares_output = Square.load_from_file_csv()
-
         self.assertTrue(type(list_squares_output) == list)
 
         for square in list_squares_input:

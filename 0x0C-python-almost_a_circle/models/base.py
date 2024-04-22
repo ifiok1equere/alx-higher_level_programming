@@ -2,6 +2,7 @@
 """THis module defines a model blueprint"""
 import json
 import os
+import csv
 
 
 class Base():
@@ -80,3 +81,57 @@ class Base():
             for dict_ in json_to_list_of_dict:
                 instance_list.append(cls.create(**dict_))
         return instance_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes in CSV format"""
+
+        filename = "{:s}.csv".format(cls.__name__)
+
+        with open(filename, 'w', newline='', encoding='utf-8') as csv_file:
+            output_writer = csv.writer(csv_file)
+            for instance in list_objs:
+                if instance.__class__.__name__ == "Rectangle":
+                    output_writer.writerow([
+                        instance.id,
+                        instance.width,
+                        instance.height,
+                        instance.x,
+                        instance.y
+                        ])
+                if instance.__class__.__name__ == "Square":
+                    output_writer.writerow([
+                        instance.id,
+                        instance.size,
+                        instance.x,
+                        instance.y
+                        ])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """deserializes in CSV format"""
+
+        filename = "{:s}.csv".format(cls.__name__)
+
+        with open(filename, encoding='utf-8') as csv_file:
+            output_reader = csv.reader(csv_file)
+            list_objs = []
+
+            for row in output_reader:
+                if len(row) == 5:
+                    dummy_instance = cls(1, 2)
+                    dummy_instance.id = int(row[0])
+                    dummy_instance.width = int(row[1])
+                    dummy_instance.height = int(row[2])
+                    dummy_instance.x = int(row[3])
+                    dummy_instance.y = int(row[4])
+                    list_objs.append(dummy_instance)
+                if len(row) == 4:
+                    dummy_instance = cls(5)
+                    dummy_instance.id = int(row[0])
+                    dummy_instance.size = int(row[1])
+                    dummy_instance.x = int(row[2])
+                    dummy_instance.y = int(row[3])
+                    list_objs.append(dummy_instance)
+
+            return list_objs
