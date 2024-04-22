@@ -5,6 +5,8 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+import sys
+from io import StringIO
 
 
 class TestBase(unittest.TestCase):
@@ -164,11 +166,13 @@ class TestBase(unittest.TestCase):
     def test_from_json_string(self):
         """Tests for converting json string to dictionary"""
 
-        r1 = Rectangle(10, 7, 2, 8)
-        s1 = Square(1, 2, 5)
+        self.tearDown()
 
-        r1_dict = r1.to_dictionary()
-        s1_dict = s1.to_dictionary()
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.s1 = Square(1, 2, 5)
+
+        r1_dict = self.r1.to_dictionary()
+        s1_dict = self.s1.to_dictionary()
 
         json_string = Base.to_json_string([r1_dict, s1_dict])
 
@@ -181,3 +185,35 @@ class TestBase(unittest.TestCase):
 
         json_to_obj = Base.from_json_string(None)
         self.assertEqual(json_to_obj, [])
+
+    def test_create(self):
+        """Test creating of instance from dictionary"""
+
+        self.tearDown()
+
+        self.r2 = Rectangle(3, 5, 1)
+        r2_dictionary = self.r2.to_dictionary()
+        self.r3 = Rectangle.create(**r2_dictionary)
+
+        self.assertTrue(type(self.r3) == Rectangle)
+        self.assertFalse(self.r2 is self.r3)
+        self.assertFalse(self.r3 == self.r2)
+        self.assertTrue(isinstance(self.r2, Rectangle))
+        self.assertTrue(isinstance(self.r3, Rectangle))
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r2)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (1) 1/0 - 3/5"
+        self.assertEqual(printed_output, expected_output)
+
+        std_out_capture = StringIO()
+        sys.stdout = std_out_capture
+        print(self.r3)
+        printed_output = std_out_capture.getvalue().rstrip('\n')
+        expected_output = "[Rectangle] (1) 1/0 - 3/5"
+        self.assertEqual(printed_output, expected_output)
+
+        # reset stdout to terminal output
+        sys.stdout = sys.__stdout__
