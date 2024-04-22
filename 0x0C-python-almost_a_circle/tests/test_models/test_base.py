@@ -67,7 +67,9 @@ class TestBase(unittest.TestCase):
         """Test for json string representation"""
 
         self.r1 = Rectangle(10, 7, 2, 8)
+        self.s1 = Square(5)
         dictionary = self.r1.to_dictionary()
+        dictionary_ = self.s1.to_dictionary()
 
         with self.assertRaises(TypeError):
             self.json_dictionary = Base.to_json_string()
@@ -84,6 +86,9 @@ class TestBase(unittest.TestCase):
         self.assertEqual(self.json_dictionary, "[{}]")
 
         self.json_dictionary = Base.to_json_string([dictionary])
+        self.assertTrue(type(self.json_dictionary) == str)
+
+        self.json_dictionary = Square.to_json_string([dictionary, dictionary_])
         self.assertTrue(type(self.json_dictionary) == str)
 
     def test_save_to_file(self):
@@ -155,3 +160,18 @@ class TestBase(unittest.TestCase):
             Square.save_to_file([""])
         with self.assertRaises(AttributeError):
             Square.save_to_file([None])
+
+    def test_from_json_string(self):
+        """Tests for converting json string to dictionary"""
+
+        r1 = Rectangle(10, 7, 2, 8)
+        s1 = Square(1, 2, 5)
+
+        r1_dict = r1.to_dictionary()
+        s1_dict = s1.to_dictionary()
+
+        json_string = Base.to_json_string([r1_dict, s1_dict])
+        json_to_obj = Base.from_json_string(json_string)
+
+        self.assertTrue(type(json_to_obj), list)
+        self.assertTrue(type(json_to_obj[0]), dict)
