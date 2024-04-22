@@ -7,6 +7,7 @@ from models.rectangle import Rectangle
 from models.square import Square
 import sys
 from io import StringIO
+import os
 
 
 class TestBase(unittest.TestCase):
@@ -230,8 +231,8 @@ class TestBase(unittest.TestCase):
         list_rectangles_input = [self.r1, self.r2]
         Rectangle.save_to_file(list_rectangles_input)
         list_rectangles_output = Rectangle.load_from_file()
-        print(list_rectangles_output)
-        print(list_rectangles_input)
+
+        self.assertTrue(type(list_rectangles_output) == list)
 
         for rect in list_rectangles_input:
             self.assertEqual(type(rect), Rectangle)
@@ -251,6 +252,96 @@ class TestBase(unittest.TestCase):
         list_squares_input = [self.s1, self.s2]
         Square.save_to_file(list_squares_input)
         list_squares_output = Square.load_from_file()
+
+        self.assertTrue(type(list_squares_output) == list)
+
+        for square in list_squares_input:
+            self.assertEqual(type(square), Square)
+            self.assertTrue(isinstance(square, Square))
+
+        self.assertFalse(list_squares_input is list_squares_output)
+        self.assertFalse(list_squares_input[0] is list_squares_output[0])
+
+    def save_to_file_csv(self):
+        """Test for serialization into CSV file"""
+
+        self.tearDown()
+
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+        self.s1 = Square(5)
+        self.s2 = Square(1, 2, 5)
+
+        filename_1 = "{:s}.csv".format(self.r1.__class__.__name__)
+        filename_2 = "{:s}.csv".format(self.s1.__class__.__name__)
+
+        Rectangle.save_to_file_csv([self.r1, self.r2])
+        Square.save_to_file_csv([self.s1, self.s2])
+
+        with open(filename_1, "r", encoding='utf-8') as csv_file:
+            output_reader = csv.reader(csv_file)
+            for row in output_reader:
+                self.assertTrue(type(row) == list)
+
+        with open(filename_2, "r", encoding='utf-8') as csv_file:
+            output_reader = csv.reader(csv_file)
+            for row in output_reader:
+                self.assertTrue(type(row) == list)
+
+        Square.save_to_file_csv([self.s1, self.s2])
+        self.assertTrue(os.path.exists("Square.csv"))
+
+        Rectangle.save_to_file_csv([self.r1, self.r2])
+        self.assertTrue(os.path.exists("Rectangle.csv"))
+
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file_csv()
+        with self.assertRaises(TypeError):
+            Square.save_to_file_csv()
+        with self.assertRaises(AttributeError):
+            Square.save_to_file_csv([34])
+        with self.assertRaises(TypeError):
+            Square.save_to_file_csv(34)
+        with self.assertRaises(AttributeError):
+            Square.save_to_file_csv([""])
+        with self.assertRaises(AttributeError):
+            Square.save_to_file_csv([None])
+
+    def load_from_file_csv(self):
+        """Test for de-serialization from a CSV file"""
+
+        self.tearDown()
+
+        # Test for Rectangle Class
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+
+        list_rectangles_input = [self.r1, self.r2]
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
+
+        self.assertTrue(type(list_rectangles_output) == list)
+
+        for rect in list_rectangles_output:
+            self.assertEqual(type(rect), Rectangle)
+            self.assertTrue(isinstance(rect, Rectangle))
+
+        for rect in list_rectangles_output:
+            self.assertEqual(type(rect), Rectangle)
+            self.assertTrue(isinstance(rect, Rectangle))
+
+        self.assertFalse(list_rectangles_input is list_rectangles_output)
+        self.assertFalse(list_rectangles_input[0] is list_rectangles_output[0])
+
+        # Test for Square Class
+        self.s1 = Square(5)
+        self.s2 = Square(7, 9, 1)
+
+        list_squares_input = [self.s1, self.s2]
+        Square.save_to_file(list_squares_input)
+        list_squares_output = Square.load_from_file_csv()
+
+        self.assertTrue(type(list_squares_output) == list)
 
         for square in list_squares_input:
             self.assertEqual(type(square), Square)
