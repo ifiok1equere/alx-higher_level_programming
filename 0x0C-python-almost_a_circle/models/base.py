@@ -73,7 +73,6 @@ class Base():
         filename = "{:s}.json".format(cls.__name__)
 
         if os.path.exists(filename) is False:
-            print("yes")
             return []
         with open(filename, "r", encoding="utf-8") as file:
             json_string = file.read()
