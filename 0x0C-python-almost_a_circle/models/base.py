@@ -133,5 +133,4 @@ class Base():
                     dummy_instance.x = int(row[2])
                     dummy_instance.y = int(row[3])
                     list_objs.append(dummy_instance)
-
             return list_objs
