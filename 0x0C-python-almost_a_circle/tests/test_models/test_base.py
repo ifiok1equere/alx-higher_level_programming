@@ -4,6 +4,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -84,3 +85,73 @@ class TestBase(unittest.TestCase):
 
         self.json_dictionary = Base.to_json_string([dictionary])
         self.assertTrue(type(self.json_dictionary) == str)
+
+    def test_save_to_file(self):
+        """Test for JSON string to a file"""
+
+        self.tearDown()
+
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+        self.s1 = Square(5)
+        self.s2 = Square(1, 2, 5)
+
+        filename_1 = "{:s}.json".format(self.r1.__class__.__name__)
+        filename_2 = "{:s}.json".format(self.s1.__class__.__name__)
+
+        Rectangle.save_to_file([self.r1, self.r2])
+        Square.save_to_file([self.s1, self.s2])
+
+        with open(filename_1, "r") as file:
+            f = file.read()
+            self.assertTrue(type(f) == str)
+
+        with open(filename_2, "r") as file:
+            self.assertTrue(type(file.read()) == str)
+
+        Square.save_to_file([self.r1])
+        with open(filename_2, "r") as file:
+            self.assertTrue(type(file.read()) == str)
+
+        Square.save_to_file([])
+        with open(filename_2, "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        Rectangle.save_to_file(None)
+        with open(filename_1, "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        Rectangle.save_to_file([self.r1, self.s2])
+        with open(filename_1, "r") as file:
+            self.assertTrue(type(file.read()) == str)
+
+        Rectangle.save_to_file({self.s1, self.s2})
+        with open(filename_1, "r") as file:
+            self.assertTrue(type(file.read()) == str)
+
+        Square.save_to_file("")
+        with open(filename_2, "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        Square.save_to_file([self.r1, self.s2])
+        with open(filename_2, "r") as file:
+            self.assertTrue(type(file.read()) == str)
+        with open(filename_2, "r") as file:
+            self.assertTrue("size" in file.read())
+
+        Rectangle.save_to_file({})
+        with open(filename_1, "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
+        with self.assertRaises(TypeError):
+            Square.save_to_file()
+        with self.assertRaises(AttributeError):
+            Square.save_to_file([34])
+        with self.assertRaises(TypeError):
+            Square.save_to_file(34)
+        with self.assertRaises(AttributeError):
+            Square.save_to_file([""])
+        with self.assertRaises(AttributeError):
+            Square.save_to_file([None])
