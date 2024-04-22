@@ -3,6 +3,7 @@
 import json
 import os
 import csv
+from turtle import Turtle as t
 
 
 class Base():
@@ -140,4 +141,48 @@ class Base():
     def draw(list_rectangles, list_squares):
         """Draw rectangles and squares"""
 
-        pass
+        pen = t()
+        pen.getscreen()
+
+        # rectangle features
+        pen.shape("turtle")
+        pen.color("red", "green")
+
+        # turtle speed
+        pen.speed(1)
+
+        # shape tracing and dimensioning
+        for instance in list_rectangles:
+            pen.pendown()
+            pen.begin_fill()
+            pen.fd(instance.width)
+            pen.lt(90)
+            pen.fd(instance.height)
+            pen.lt(90)
+            pen.fd(instance.width)
+            pen.lt(90)
+            pen.fd(instance.height)
+            pen.end_fill()
+            pen.penup()
+            pen.fd(1.5 * instance.width)
+
+        pen.color("red", "violet")
+
+        # square features
+        pen.lt(90)
+        pen.fd(500)
+        for instance in list_squares:
+            pen.pendown()
+            pen.begin_fill()
+            pen.fd(instance.width)
+            pen.lt(90)
+            pen.fd(instance.height)
+            pen.lt(90)
+            pen.fd(instance.width)
+            pen.lt(90)
+            pen.fd(instance.height)
+            pen.end_fill()
+            pen.penup()
+            pen.fd(1.5 * instance.width)
+
+        pen.screen.mainloop()
