@@ -1,3 +1,3 @@
 -- query a table
 
-SELECT score, name FROM second_table WHERE name IS NOT NULL ORDER BY score DESC LIMIT 4;
+SELECT score, name FROM second_table WHERE name IS NOT NULL ORDER BY score DESC;
