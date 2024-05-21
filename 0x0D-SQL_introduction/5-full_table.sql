@@ -1,3 +1,3 @@
 -- decsribe table
 
-SHOW FULL COLUMNS FROM first_name;
+SHOW CREATE TABLE `first_table`;
