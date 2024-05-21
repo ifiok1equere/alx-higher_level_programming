@@ -349,6 +349,3 @@ class TestBase(unittest.TestCase):
 
         self.assertFalse(list_squares_input is list_squares_output)
         self.assertFalse(list_squares_input[0] is list_squares_output[0])
-
-if __name__ == "__main__":
-    unittest.main()

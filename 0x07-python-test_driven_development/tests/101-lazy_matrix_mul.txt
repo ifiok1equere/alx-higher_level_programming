@@ -1,0 +1,156 @@
+"""
+Test case for the lazy_matrix_multiplication(matrix, div) function.
+
+This test checks if the function correctly
+multiplies all elements of a matrix.
+
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
+
+>>> lazy_matrix_mul([[1, 2, 3]], [[4, 5, 6]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 3]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+>>> lazy_matrix_mul([[1, 2]], [[2, 4], [3, 4]])
+[[8, 12]]
+
+>>> matrix_mul([[2]], [[3]])
+[[6]]
+
+>>> lazy_matrix_mul([[1.0, 2, 3], [5.5, 3, 6]], [[4, 5], [7.7, 8.9], [4.8, 0]])
+[[33.8, 22.8], [73.9, 54.2]]
+
+>>> lazy_matrix_mul([{1, 2, 3}], [[4, 5, 6]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+
+>>> lazy_matrix_mul([[1]])
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> lazy_matrix_mul([[1, 2, 3]], [[4, None, 6]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
+>>> lazy_matrix_mul([[None]], [[None]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> lazy_matrix_mul([['a', 'b', 'c']], [['c', 'd', 'e']])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> lazy_matrix_mul([[[1, 2, 3]], 0])
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> lazy_matrix_mul([(1, 2)], [0])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+
+>>> lazy_matrix_mul([[]])
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> lazy_matrix_mul([[[]]])
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> lazy_matrix_mul("matrix", "ifiok")
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+>>> lazy_matrix_mul()
+Traceback (most recent call last):
+...
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+>>> lazy_matrix_mul([],[])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+>>> lazy_matrix_mul([[]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+>>> lazy_matrix_mul([[1]], [])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+>>> lazy_matrix_mul([[2]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+>>> lazy_matrix_mul("matrix", "ifiok")
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+>>> lazy_matrix_mul([[]], "ifiok")
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list
+
+>>> lazy_matrix_mul([['a', 1.3, 4]], [[1, 2, 3]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> lazy_matrix_mul([["matrix"]], [["ifiok"]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+>>> lazy_matrix_mul([[1, 5, 8.4]], [["ifiok"]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
+>>> lazy_matrix_mul([[1, 5], [4]], [[1, 2], [2, 3]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_a must be of the same size
+
+>>> lazy_matrix_mul([[1, 5], [1, 8]], [[2],[1, 3]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_b must be of the same size
+
+>>> lazy_matrix_mul("string", [[2, 3],[1, 3]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+>>> lazy_matrix_mul([[1, 5], [1, 8]], [1, 3])
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list of lists
+
+"""
+
+# vim: set ft=rst
