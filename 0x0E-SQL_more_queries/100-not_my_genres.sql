@@ -9,4 +9,4 @@ FROM (
 LEFT JOIN tv_shows AS newest 
 ON new_table.show_id = newest.id 
 WHERE new_table.id NOT IN (6, 1, 2, 7, 8) 
-ORDER BY new_table.name ASC;
+ORDER BY new_table.name ASC LIMIT 3;
