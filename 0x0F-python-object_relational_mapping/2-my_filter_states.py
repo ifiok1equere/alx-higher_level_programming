@@ -15,8 +15,8 @@ if __name__ == "__main__":
             passwd=pwd, db=db_name, charset="utf8"
             )
 
-    query = 'SELECT * FROM states WHERE name = ' \
-            '"{:s}" ORDER BY id ASC'.format(str(arg))
+    query = "SELECT * FROM states WHERE name = " \
+            "'{:s}' ORDER BY id ASC".format(str(arg))
     print(query)
     cur = conn.cursor()
     cur.execute(query)
