@@ -16,7 +16,7 @@ if __name__ == "__main__":
             )
 
     query = "SELECT * FROM states WHERE name = " \
-            "'{:s}' ORDER BY id ASC".format(str(arg))
+            "'{:s}' ORDER BY id ASC".format(arg)
     print(query)
     cur = conn.cursor()
     cur.execute(query)
